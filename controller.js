@@ -31,6 +31,6 @@ navigationLinks.forEach(function(link) {
     event.preventDefault();
     const targetSectionId = link.getAttribute('href');
     const targetSection = document.querySelector(targetSectionId);
-    targetSection.scrollIntoView({ behavior: 'smooth' });
+    targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
   });
 });

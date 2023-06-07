@@ -2,7 +2,7 @@ html,
 body {
   font-size: 16px;
   color: #dfdfdf;
-  background-color: #063647;
+  background-color: #11566d;
 }
 
 a {
@@ -14,20 +14,20 @@ section {
   padding-bottom: 3rem;
 }
 
-.section-0,
-.section-1,
-.section-2,
-.section-3,
-.section-4 {
-  background-color: #063647;
+.section-1 {
+  background-color: #11566d;
 }
 
 .section-2 {
-  background-color: #052d3d;
+  background-color: #0e4a57;
 }
 
 .section-3 {
-  background-color: #0e282e;
+  background-color: #083e4a; /* Background color for the About section */
+}
+
+.section-4 {
+  background-color: #052e3f; /* Background color for the Project section */
 }
 
 .my-portfolio-link {

@@ -10,6 +10,44 @@
 	<link rel="icon" type="image/x-icon" href="assets/img/favicon.png">
 	<meta name="author" content="Andrei Niño Calope">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<style>
+		/* Custom CSS for responsiveness */
+		@media screen and (max-width: 768px) {
+			.column.basic-info {
+				margin-top: 20px;
+			}
+		}
+
+		@media screen and (max-width: 1024px) {
+			.project-text {
+				padding: 1rem;
+			}
+		}
+
+		@media screen and (max-width: 768px) {
+			.project-text {
+				margin-bottom: 20px;
+			}
+		}
+
+		@media screen and (max-width: 576px) {
+			.section.section-1 .columns.is-multiline .column.is-one-quarter {
+				text-align: center;
+			}
+
+			.section.section-1 .columns.is-multiline .column.is-one-quarter .avatar {
+				margin: 0 auto;
+			}
+
+			.section.section-2 .columns.is-multiline.is-desktop .column.is-half {
+				margin-bottom: 20px;
+			}
+
+			.social-container {
+				margin-top: 20px;
+			}
+		}
+	</style>
 </head>
 <body>
 	<!-- Navbar -->
@@ -35,9 +73,9 @@
 		</span>
 	</nav>
 	
-	<section id="about" class="section section-1">
+	<section id="home" class="section section-1">
 		<div class="container has-text-centered">
-			<div class="columns is-multiline">
+			<div class="columns is-multiline is-centered">
 				<!-- Profile -->
 				<div class="column is-one-quarter">
 					<img class="avatar" src="assets/img/profile.png">
@@ -56,17 +94,43 @@
 			</div>
 		</div>
 	</section>
+
+	<section id="about" class="section section-2">
+		<div class="container">
+			<div class="has-text-centered">
+				<h3 class="title is-3">About</h3>
+			</div>
+			<div class="columns is-multiline">
+				<!-- Educational Background -->
+				<div class="column is-half">
+					<h4 class="title is-4">Educational Background</h4>
+					<p>Tertiary - Bohol Island State University Balilihan Campus, 3rd Year</p>
+					<p>Secondary - Fatima National High School, Fatima, Cortes, Bohol</p>
+					<p>Primary - Boctol Elementary School, Boctol, Balilihan, Bohol</p>
+				</div>
+				<!-- Skills and Interests -->
+				<div class="column is-half">
+					<h4 class="title is-4">Skills and Interests</h4>
+					<p>Video and Photo Editing</p>
+					<p>Programming</p>
+					<p>Typing</p>
+					<p>Online Gaming</p>
+					<p>Cooking</p>
+				</div>
+			</div>
+		</div>
+	</section>
 	
 	<!-- Projects -->
-	<section id="projects" class="section section-2">
+	<section id="projects" class="section section-3">
 		<div class="container">
 			<div class="has-text-centered">
 				<h3 class="title is-3">Projects</h3>
 			</div>
 			
-			<div class="columns is-multiline is-desktop">
+			<div class="columns is-multiline is-centered">
 				<!-- Project 1 -->
-				<div class="column">
+				<div class="column is-one-third">
 					<div class="box project-text">
 						<article>
 							<div>
@@ -85,7 +149,7 @@
 					</div>
 				</div>
 				<!-- Project 2 -->
-				<div class="column">
+				<div class="column is-one-third">
 					<div class="box project-text">
 						<article>
 							<div>
@@ -104,7 +168,7 @@
 					</div>
 				</div>
 				<!-- Project 3 -->
-				<div class="column">
+				<div class="column is-one-third">
 					<div class="box project-text">
 						<article>
 							<div>
@@ -123,7 +187,7 @@
 					</div>
 				</div>
 				<!-- Project 4 -->
-				<div class="column">
+				<div class="column is-one-third">
 					<div class="box project-text">
 						<article>
 							<div>
@@ -135,14 +199,14 @@
 							</div>
 							<div>			
 								<p>
-									This is the project where we updated our first HTML file by adding CSS code, making it more pleasing to see.
+									This is the project where we updated our first HTML file by adding CSS code on it, making it more pleasing to see.
 								</p>
 							</div>
 						</article>
 					</div>
 				</div>
 				<!-- Project 5 -->
-				<div class="column">
+				<div class="column is-one-third">
 					<div class="box project-text">
 						<article>
 							<div>
@@ -166,7 +230,7 @@
 	</section>
 	
 	<!-- Social -->
-	<section id="social" class="section section-3">
+	<section id="social" class="section section-4">
 		<div class="container">
 		  <div class="columns">
 			<div class="column">
@@ -190,44 +254,31 @@
 	<!-- Scripts  -->
 <script src="controller.js"></script>
 <script>
-  document.querySelector('.nav-toggle').addEventListener('click', function() {
-    document.querySelector('.nav-menu').classList.toggle('active');
+  /* Toggling the responsive navigation menu */
+  const navToggle = document.querySelector(".nav-toggle");
+  const navMenu = document.querySelector(".nav-right");
+
+  navToggle.addEventListener("click", () => {
+    navMenu.classList.toggle("nav-menu-active");
   });
 
-  function handleZoom(event) {
-    const figure = event.target.closest('.image');
-    figure.classList.toggle('zoomed');
+  /* Smooth scrolling */
+  const scrollLinks = document.querySelectorAll(".nav-item");
+
+  for (const link of scrollLinks) {
+    link.addEventListener("click", clickHandler);
   }
 
-  const zoomableImages = document.querySelectorAll('.zoomable');
-  zoomableImages.forEach(function(image) {
-    image.addEventListener('click', handleZoom);
-  });
+  function clickHandler(e) {
+    e.preventDefault();
+    const href = this.getAttribute("href");
+    const offsetTop = document.querySelector(href).offsetTop;
 
-  const myPortfolioLink = document.querySelector('.my-portfolio-link');
-  myPortfolioLink.addEventListener('click', function(event) {
-    event.preventDefault();
-  });
-
-  const navigationLinks = document.querySelectorAll('.nav-item');
-  navigationLinks.forEach(function(link) {
-    link.addEventListener('click', function(event) {
-      event.preventDefault();
-    });
-  });
-
-  function removeActiveClassFromLinks() {
-    navigationLinks.forEach(function(link) {
-      link.classList.remove('active');
+    scroll({
+      top: offsetTop,
+      behavior: "smooth",
     });
   }
-
-  navigationLinks.forEach(function(link) {
-    link.addEventListener('click', function() {
-      removeActiveClassFromLinks();
-      link.classList.add('active');
-    });
-  });
 </script>
 </body>
-</html>"
+</html>
